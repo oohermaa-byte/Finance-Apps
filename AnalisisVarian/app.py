@@ -1,4 +1,3 @@
-1.	CODE untuk di Github.com pada app.py, bisa copy kode warna kuning dibawah ini.
 import streamlit as st
 import pandas as pd
 import plotly.express as px
@@ -29,7 +28,7 @@ if uploaded_file:
     # Check for required columns
     required_columns = ["Category", "Budget", "Actual"]
     if not all(col in df.columns for col in required_columns):
-        st.error("⚠️ The uploaded file must contain 'Category', 'Budget', and 'Actual' columns!")
+        st.error("⚠ The uploaded file must contain 'Category', 'Budget', and 'Actual' columns!")
         st.stop()
 
     # Calculate Variance and Variance Percentage
@@ -79,7 +78,7 @@ if uploaded_file:
     st.write(response.choices[0].message.content)
 
     # AI Chat - Users Can Ask Questions
-    st.subheader("🗣️ Chat with AI About Variance Analysis")
+    st.subheader("🗣 Chat with AI About Variance Analysis")
 
     user_query = st.text_input("🔍 Ask the AI about your variance data:")
     if user_query:
@@ -91,70 +90,3 @@ if uploaded_file:
             model="llama-3.1-8b-instant",
         )
         st.write(chat_response.choices[0].message.content)
-
-Catatan: untuk mengganti model bisa pilih model di link Supported Models - GroqDocs (https://console.groq.com/docs/models)
-
-Bisa copy di Modeli ID dan copy di atas yang warna hijau kodenya.
- 
-
-
-
-
-
-
-2.	CODE untuk di Github.com pada requiements.txt, bisa copy kode warna kuning dibawah ini.
-
-streamlit
-pandas
-plotly
-groq
-python-dotenv
-openpyxl
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-PROMPT AI NYA untuk di Chat GPT
-
-Saya ingin Anda membuat aplikasi Streamlit berbasis Python untuk analisis Budget vs. Actual.
-
-Spesifikasi detail:
-1. Aplikasi memiliki UI dengan judul *Budget vs. Actuals AI – Variance Analysis & Commentary"*.
-2. User dapat mengunggah file Excel (.xlsx) dengan kolom wajib: **Category, Budget, Actual**.
-3. Aplikasi harus menghitung:
-   - Variance = Actual - Budget
-   - Variance % = (Variance / Budget) * 100
-4. Aplikasi menampilkan preview dataframe setelah dihitung.
-5. Buat dua grafik interaktif menggunakan **Plotly**:
-   - Bar chart (Variance by Category, dengan warna merah–kuning–hijau).
-   - Line chart (Budget vs Actual, per Category).
-6. Tambahkan integrasi **Groq API**:
-   - Import: `from groq import Groq`
-   - API Key di-load aman lewat `.env` (`dotenv`).
-   - Bagian pertama: AI langsung memberi summary insights & rekomendasi atas variance.
-   - Bagian kedua: user bisa bertanya (text input) dan AI menjawab berdasarkan data variance.
-7. Model yang digunakan: **llama-3.1-8b-instant**.
-
-Buatkan kode Python lengkap (`app.py`) dengan struktur rapi dan komentar penjelasan.
-
-
-
-
-
-
-
-
-
